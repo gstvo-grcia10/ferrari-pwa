@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ferrari — Showroom Oficial</title>
+  
+  <!-- Configurações PWA Obrigatórias -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e10600">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ferrari">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <!-- Estilos e Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Alerta de Conectividade Offline (PWA) -->
+  <div id="offlineBanner" class="offline-banner hidden">
+    <span>📡 Você está navegando offline — Os carros continuam acessíveis no cache PWA!</span>
+  </div>
+
+  <!-- Barra de Notificação de Instalação (PWA Banner) -->
+  <div id="pwaInstallBanner" class="pwa-install-banner hidden">
+    <div class="pwa-info">
+      <img src="icon-192.png" alt="Ferrari Icon" class="pwa-mini-icon">
+      <div>
+        <strong>Instalar Aplicativo Ferrari</strong>
+        <p>Acesse em tela cheia com desempenho nativo no seu dispositivo</p>
+      </div>
+    </div>
+    <div class="pwa-actions">
+      <button id="btnInstallApp" class="btn btn-primary btn-sm">Instalar App</button>
+      <button id="btnDismissInstall" class="btn-icon" aria-label="Fechar">✕</button>
+    </div>
+  </div>
+
+  <!-- Cabeçalho Principal -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand-group">
+        <div class="shield-badge">
+          <span class="flag-stripe green"></span>
+          <span class="flag-stripe white"></span>
+          <span class="flag-stripe red"></span>
+          <img src="icon-192.png" alt="Ferrari Cavallino" class="brand-shield-img">
+        </div>
+        <a href="#home" class="brand-logo">FERRARI</a>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#modelos" class="nav-link active">Modelos</a>
+        <a href="#inovacao" class="nav-link">Engenharia</a>
+        <a href="#experiencia" class="nav-link">Experiência VIP</a>
+        <a href="#contato" class="nav-link">Showroom</a>
+      </nav>
+
+      <div class="nav-extra">
+        <button id="headerInstallBtn" class="btn btn-outline btn-sm hidden">
+          📲 Instalar App
+        </button>
+        <button id="menuToggle" class="menu-toggle" aria-label="Abrir Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="tricolore-line"></span>
+        <span>NOVA ERA DE MARANELLO</span>
+      </div>
+      <h1 class="hero-title">PASSIONE.<br><span class="highlight-red">PERFORMANCE.</span><br>PERFEIÇÃO.</h1>
+      <p class="hero-subtitle">
+        Descubra a linha de produção oficial com os supercarros mais avançados e desejados do mundo. Engenharia da Fórmula 1 para as estradas.
+      </p>
+      <div class="hero-buttons">
+        <a href="#modelos" class="btn btn-primary">Explorar Coleção</a>
+        <button id="heroSoundBtn" class="btn btn-secondary">
+          <span class="pulse-icon">🔊</span> Simular Motor V12
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">1.200 CV</span>
+          <span class="stat-label">Ferrari F80 Hipercarro</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">2,15s</span>
+          <span class="stat-label">0 a 100 km/h</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">9.500 RPM</span>
+          <span class="stat-label">Corte do V12 Aspirado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Modelos / Catálogo -->
+  <section id="modelos" class="catalog-section">
+    <div class="section-header">
+      <div class="sub-heading">GAMA OFICIAL EM VENDA</div>
+      <h2 class="section-title">Modelos <span class="highlight-red">Ferrari</span></h2>
+      <p class="section-description">
+        Veículos genuínos em produção atual pela fábrica em Maranello, Itália.
+      </p>
+
+      <!-- Filtros por Categoria -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos os Modelos</button>
+        <button class="filter-btn" data-filter="supercar">Hipercarros & Híbridos</button>
+        <button class="filter-btn" data-filter="v12">V12 Clássicos</button>
+        <button class="filter-btn" data-filter="berlinetta">Berlinettas</button>
+        <button class="filter-btn" data-filter="lifestyle">4 Portas & Spider</button>
+      </div>
+    </div>
+
+    <!-- Grade de Carros -->
+    <div class="cars-grid" id="carsGrid">
+      <!-- Inserido dinamicamente via app.js para manter código modular -->
+    </div>
+  </section>
+
+  <!-- Seção de Engenharia e Inovação -->
+  <section id="inovacao" class="tech-section">
+    <div class="tech-container">
+      <div class="tech-header">
+        <div class="sub-heading">DNA DAS PISTAS</div>
+        <h2 class="section-title">Tecnologia da Fórmula 1 para a Estrada</h2>
+      </div>
+      <div class="tech-cards">
+        <div class="tech-card">
+          <div class="tech-icon">⚡</div>
+          <h3>Propulsão Híbrida Turbo</h3>
+          <p>Sistemas híbridos plug-in com regeneração de energia inspirada na F1 e nas 24 Horas de Le Mans (499P campeã).</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">💨</div>
+          <h3>Aerodinâmica Ativa</h3>
+          <p>Asas móveis e canais de venturi no chassi geram mais de 1.000 kg de downforce sem arrasto excessivo.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🏁</div>
+          <h3>Chassi em Fibra de Carbono</h3>
+          <p>Monocoque ultraleve de alta rigidez torcional garantindo precisão milimétrica em curvas em alta velocidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulador de Ronco de Motor Interativo -->
+  <section id="experiencia" class="sound-experience-section">
+    <div class="sound-box">
+      <div class="sound-header">
+        <span class="badge-gold">SINFONIA DE MARANELLO</span>
+        <h2>Ronco Real do Motor Ferrari</h2>
+        <p>Ouça a gravação de áudio real e autêntica de um legítimo motor Ferrari acelerando a fundo e cortando giro!</p>
+        
+        <div class="sound-mode-switch">
+          <button class="sound-chip active" data-engine="v12">🏎️ Motor V12 Aspirado (Gravação Real)</button>
+          <button class="sound-chip" data-engine="v8">🏁 Motor V8 Esportivo (Gravação Real)</button>
+        </div>
+      </div>
+      <div class="tachometer-container">
+        <div class="tachometer">
+          <div class="tacho-dial">
+            <div id="tachoNeedle" class="tacho-needle"></div>
+            <div class="tacho-center">
+              <span id="rpmDisplay" class="rpm-number">1000</span>
+              <span class="rpm-label">RPM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualizador de Ondas Sonoras -->
+        <div id="soundWaveVisualizer" class="sound-waves hidden">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="sound-controls">
+          <button id="btnRevEngine" class="btn btn-primary btn-large">
+            🏎️ ACELERAR A FUNDO (SOM REAL)
+          </button>
+          <p class="sound-hint">Clique para reproduzir o áudio real e ver o conta-giros em ação</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Agendamento VIP / Contato -->
+  <section id="contato" class="contact-section">
+    <div class="contact-card">
+      <div class="contact-text">
+        <span class="sub-heading">ATENDIMENTO EXCLUSIVO</span>
+        <h2>Agende uma Consultoria VIP</h2>
+        <p>Receba a atenção personalizada de um especialista da Ferrari para configuração sob medida de seu próximo bólido.</p>
+        <ul class="contact-benefits">
+          <li>✓ Apresentação privada no showroom</li>
+          <li>✓ Acesso ao catálogo de personalização *Tailor Made*</li>
+          <li>✓ Experiência de pista e test drive agendado</li>
+        </ul>
+      </div>
+      <form id="testDriveForm" class="contact-form">
+        <div class="form-group">
+          <label for="userName">Nome Completo</label>
+          <input type="text" id="userName" required placeholder="Ex.: Lucas Silveira">
+        </div>
+        <div class="form-group">
+          <label for="userEmail">E-mail</label>
+          <input type="email" id="userEmail" required placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="form-group">
+          <label for="userPhone">Telefone / WhatsApp</label>
+          <input type="tel" id="userPhone" required placeholder="(11) 98765-4321">
+        </div>
+        <div class="form-group">
+          <label for="carModelSelect">Modelo de Interesse</label>
+          <select id="carModelSelect" required>
+            <option value="Ferrari F80">Ferrari F80 (1.200 cv)</option>
+            <option value="Ferrari 12Cilindri">Ferrari 12Cilindri (830 cv)</option>
+            <option value="Ferrari SF90 XX Stradale">Ferrari SF90 XX Stradale (1.030 cv)</option>
+            <option value="Ferrari 296 GTB">Ferrari 296 GTB (830 cv)</option>
+            <option value="Ferrari Purosangue">Ferrari Purosangue (725 cv)</option>
+            <option value="Ferrari Roma Spider">Ferrari Roma Spider (620 cv)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Confirmar Agendamento</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modal de Detalhes do Veículo -->
+  <div id="carModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Fechar">&times;</button>
+      <div id="modalBody">
+        <!-- Preenchido via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Notificação -->
+  <div id="toastNotification" class="toast hidden"></div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-group">
+          <img src="icon-192.png" alt="Ferrari" class="footer-shield">
+          <span class="footer-logo">FERRARI</span>
+        </div>
+        <p>Projeto Progressive Web App (PWA) de demonstração com veículos reais comercializados pela Scuderia Ferrari.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Tecnologias PWA</h4>
+        <ul>
+          <li>✓ Manifest.json configurado</li>
+          <li>✓ Service Worker com Cache Offline</li>
+          <li>✓ Ícones PWA 192px & 512px</li>
+          <li>✓ Pronto para GitHub Pages e PWABuilder</li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Linha Oficial</h4>
+        <ul>
+          <li>Ferrari F80</li>
+          <li>Ferrari 12Cilindri</li>
+          <li>Ferrari SF90 XX</li>
+          <li>Ferrari 296 GTB</li>
+          <li>Ferrari Purosangue</li>
+          <li>Ferrari Roma Spider</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ferrari Showroom PWA — Desenvolvido com padrões modernos para Android (APK) e Web.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
